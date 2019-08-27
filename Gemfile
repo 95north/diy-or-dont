@@ -15,7 +15,8 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 
-gem 'active_model_serializers', '~> 0.10.0'
+# gem 'active_model_serializers', '~> 0.10.0'
+gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

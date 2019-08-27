@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     # enabled on an action, this before_action flags its after_action to 
     # verify that JavaScript responses are for XHR requests, ensuring they 
     # follow the browser's same-origin policy.
-
+    attr_accessor :username, :location
 
     def index
         # debugger
