@@ -13,7 +13,7 @@ u4 = User.create({username: "Steph", location:"Buna, TX", password: "Birthday"})
 u5 = User.create({username: "Ben", location:"Oakland, CA", password: "Birthday"})
 
 p1 = Project.create({name:"Re-Grout Shower", overview:"Use a thin tool to remove old grout and caulk, replace grout, squeegee clean as go, add new caulk, seal grout.", description:"Pending", image:""})
-p2 = Project.create({name:"Fix Leaky Facuet", overview:"Turn off water supply, remove knobs, add new washers, or headset if needed", description:"Pending", image:""})
+p2 = Project.create({name:"Fix Leaky Faucet", overview:"Turn off water supply, remove knobs, add new washers, or headset if needed", description:"Pending", image:""})
 p3 = Project.create({name:"Dog cabin", overview:"Cut wood (straight cuts only) and drill it together", description:"Pending", image:""})
 p4 = Project.create({name:"Install Window", overview:"Cut hole in wall, install window framing, window glass, panes", description:"Pending", image:""})
 p5 = Project.create({name:"Replace Linoleum Tile", overview:"Remove old damaged tiles, replace with shiny new ones", description:"Pending", image:""})
@@ -95,7 +95,7 @@ us3 = UserSupply.create({
 
 ps1 = ProjectSupply.create({
     project_id: 2,
-    supply_id: 3,
+    supply_id: 4,
     quantity: 1,
     note: "Make sure to get correct size! Bring old one to hardware store",
     mandatory: true
