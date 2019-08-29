@@ -2,9 +2,30 @@ class UserProjectsController < ApplicationController
     # gem = Active Model Serializers
     attr_accessor :id, :status, :usernote, :reviewDifficulty, :reviewFun, :reviewTime, :reviewText
 
-    # def one_user_projects
-    #     user = User.find(params["id"])
 
+    def one_user_projects
+        # Output structure desired: 
+        # userProjects: [  [(user_proj/“reviews”,  proj,  proj_supplies], … ]
+        # userSupplies: [ user_supplyObj  + name:Supply.name,   … ] 
+        user = User.find(params["id"])
+        @ups = user.user_projects  
+           
+        userSupplies= [user.user_supplies, user.supplies]
+        output = []
+
+        @ups.each do |uproj|
+            p = Project.find( uproj.project_id )
+            output.push([user.username, user.location, uproj, p, p.supplies])
+        end   
+
+        output.push(userSupplies)
+        render json: output        
+    end
+
+
+
+    # def one_user_projects  --- trying out Active Record Serializer ...
+    #     user = User.find(params["id"])
 
     #     #render json: {projects: user_projects}
     #     # render json: user, root: false  #NOPE 
@@ -38,29 +59,6 @@ class UserProjectsController < ApplicationController
         
     # end
   
-
-
-
-
-    def one_user_projects
-        # Output structure desired: 
-        # userProjects: [  [(user_proj/“reviews”,  proj,  proj_supplies], … ]
-        # userSupplies: [ user_supplyObj  + name:Supply.name,   … ] 
-        user = User.find(params["id"])
-        @ups = user.user_projects   # Works! 
-        #project_supplies = user.projects.map { |proj|  proj.supplies }
-           
-        userSupplies= [user.user_supplies, user.supplies]
-        output = []
-
-        @ups.each do |uproj|
-            p = Project.find( uproj.project_id )
-            output.push([user.username, user.location, uproj, p, p.supplies])
-        end   
-
-        output.push(userSupplies)
-        render json: output        
-    end
 
 
 
