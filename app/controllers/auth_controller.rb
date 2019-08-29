@@ -14,13 +14,15 @@ class AuthController < ApplicationController
     def authenticate
         #username = JWT.decode(token, "secret")[0]["username"]
         user = User.find_by(username: user_params["username"])
+        # debugger  When I log in as Ben, it does find Ben in the backend (by username)
         # I never check password!   Password should come in as JWT though.. no? 
         #if user_params["password"] === user.password
         if user.password_digest   # I never check password! 
             secret = 'secret'
             token = JWT.encode(user, secret, 'HS256')
             render json: {
-                token: token    # Does return a token! 
+                token: token,    # Does return a token! 
+                user_id: user.id
             }
         else
             render json: {
