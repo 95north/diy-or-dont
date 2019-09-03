@@ -1,0 +1,13 @@
+
+
+class SuppliesController < ApplicationController    
+    # attr_accessor :name, :id, :overview, :description, :image
+    
+    def index 
+        all_projects = Supply.all
+        render json: all_projects
+    end
+
+
+
+end

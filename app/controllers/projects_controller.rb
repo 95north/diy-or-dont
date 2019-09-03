@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
     attr_accessor :name, :id, :overview, :description, :image
 
+
     def create
         new_project = Project.new
         new_project["name"] = params
@@ -13,7 +14,7 @@ class ProjectsController < ApplicationController
         render json: new_project
     end
 
-
+    
 
     def all_projects_and_their_tools_and_reviews
         @projects = Project.all
