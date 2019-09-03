@@ -3,6 +3,21 @@ class UserProjectsController < ApplicationController
     attr_accessor :id, :status, :usernote, :reviewDifficulty, :reviewFun, :reviewTime, :reviewText
 
 
+    def create
+        new_user_project = UserProject.new
+        new_user_project.user_id = params["user_id"]
+        new_user_project.project_id = params["project_id"]
+        new_user_project.save 
+        render json: new_user_project
+    end
+
+
+    def update
+        params
+        debugger
+    end
+
+
     def one_user_projects
         # Output structure desired: 
         # userProjects: [  [(user_proj/“reviews”,  proj,  proj_supplies], … ]
@@ -19,8 +34,32 @@ class UserProjectsController < ApplicationController
         end   
 
         output.push(userSupplies)
+        # debugger  Tested- Steph doesn't have user supplies.  Tori does. 
         render json: output        
     end
+
+
+    def get_reviews
+        proj_id = params["id"].to_i
+
+        reviews = UserProject.select {|proj| proj.project_id == proj_id }
+         # Try refactoring to use find_each again?  Does Select copy all records from DB? 
+            # https://guides.rubyonrails.org/v2.3.11/active_record_querying.html
+
+        reviews_and_users = []
+
+        if (reviews.length > 0 )
+            reviews.each do |review|
+                u = User.find(review.user_id)
+                # return([review, u])
+                reviews_and_users.push([review, u])
+            end
+        end
+        
+        # debugger  -- reviews_and_users has data here!! 
+        render json: reviews_and_users
+    end
+
 
 
 

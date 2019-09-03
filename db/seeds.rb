@@ -77,13 +77,15 @@ us1 = UserSupply.create({
     quantity: 99,
     measurement: "Have a mixed pack!",
     userneeds: false,
+    intoolbox: true
 })
 us2 = UserSupply.create({
     user_id: 1,
     supply_id:4,
     quantity: 12,
-    measurement: "Have a mixed pack!",
+    measurement: "Have mixed pack.",
     userneeds: false,
+    intoolbox: true
 })
 us3 = UserSupply.create({
     user_id: 5,
@@ -91,6 +93,23 @@ us3 = UserSupply.create({
     quantity: 4,
     measurement: "Have 4 sheets leftover from project",
     userneeds: false,
+    intoolbox: true
+})
+us4 = UserSupply.create({
+    user_id: 1,
+    supply_id:2,
+    quantity: 1,
+    measurement: "Need 1/2\" 4x8 sheet",
+    userneeds: true,
+    intoolbox: false
+})
+us5 = UserSupply.create({
+    user_id: 1,
+    supply_id: 5,
+    quantity: 1,
+    measurement: "Need another high quality one",
+    userneeds: true,
+    intoolbox: false
 })
 
 ps1 = ProjectSupply.create({

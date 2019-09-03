@@ -22,7 +22,9 @@ class AuthController < ApplicationController
             token = JWT.encode(user, secret, 'HS256')
             render json: {
                 token: token,    # Does return a token! 
-                user_id: user.id
+                user_id: user.id,
+                user_name: user.username,
+                user_location: user.location
             }
         else
             render json: {
