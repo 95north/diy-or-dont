@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
       # Projects
   get '/allprojects', to: 'projects#all_projects_and_their_tools_and_reviews' #For All Projects display
-  post '/', to: 'projects#create'  # URL to post from ?? 
+  post '/projects', to: 'projects#create'  # URL to post from ?? 
 
       # Supplies
   get '/supplies', to: 'supplies#index' #For NewProjectForm Container

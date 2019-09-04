@@ -6,12 +6,30 @@ class ProjectsController < ApplicationController
 
     def create
         new_project = Project.new
-        new_project["name"] = params
-        new_project["overview"] = params
-        new_project["description"] = params
-        new_project["image"] = params
+        new_project["name"] = params["newProjectName"]
+        new_project["overview"] = params["newProjectOverview"]
+        new_project["description"] = params["newProjectDescription"]
+        # new_project["image"] = params
         new_project.save 
-        render json: new_project
+        
+        project_id = new_project.id 
+        params["tools"].each { |proj_tool|
+
+            ps = ProjectSupply.new
+            end_index = proj_tool["name"].length
+
+            ps["quantity"] = proj_tool["quantity"]
+            ps["note"] = proj_tool["note"]
+            ps["mandatory"] = proj_tool["mandatory"]
+            ps["supply_id"] = proj_tool["name"].slice!(6..end_index)
+            ps["project_id"] = project_id
+
+            ps.save
+        }
+
+        output= []
+        output.push([proj, proj.user_projects, proj.supplies, proj.project_supplies])
+        render json: output
     end
 
     
