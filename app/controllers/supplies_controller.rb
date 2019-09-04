@@ -8,6 +8,13 @@ class SuppliesController < ApplicationController
         render json: all_projects
     end
 
+    def create 
+        s = Supply.new
+        debugger
+        s.name = params["name"]
+        s.description = params["description"]
+    end
+
 
 
 end
