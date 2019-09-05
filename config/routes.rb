@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get '/supplies', to: 'supplies#index' #For NewProjectForm Container
   post '/supplies', to: 'supplies#create'  #New Tool Form
 
+      # UserSupplies
+  post '/addtomytoolbox', to: 'user_supplies#add_to_my_toolbox'  
+  post '/add_to_shopping_list', to: 'user_supplies#add_to_shopping_list'  
 
 
 end
