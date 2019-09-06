@@ -38,6 +38,13 @@ class UserProjectsController < ApplicationController
     end
 
 
+    def delete 
+        up = UserProject.find(params["id"])
+        up.delete
+        render json: params["id"] + "  Delete  "
+    end
+
+
     def one_user_projects
         # Output structure desired: 
         # userProjects: [  [(user_proj/“reviews”,  proj,  proj_supplies], … ]

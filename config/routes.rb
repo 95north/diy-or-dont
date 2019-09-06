@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   post '/signup', to: 'users#create'
-
   get '/retrieve_user', to: 'auth#retrieve'
   post '/login', to: 'auth#authenticate'
 
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   get '/reviews/:id', to: 'user_projects#get_reviews'   # All reviews for one project
   get '/review/:id', to: 'user_projects#show'   # One user's review for one project. NewReviewContainer
   patch '/review/:id', to: 'user_projects#update' # New / Edit Review
-
+  delete '/user_projects/:id', to: 'user_projects#delete' # Delete from My Projects
 
       # Projects
   get '/allprojects', to: 'projects#all_projects_and_their_tools_and_reviews' #For All Projects display
@@ -24,7 +23,8 @@ Rails.application.routes.draw do
 
       # UserSupplies
   post '/addtomytoolbox', to: 'user_supplies#add_to_my_toolbox'  
-  post '/add_to_shopping_list', to: 'user_supplies#add_to_shopping_list'  
-
+  post '/add_to_shopping_list', to: 'user_supplies#add_to_shopping_list' 
+  patch '/move_to_toolbox/:id', to: 'user_supplies#move_from_shopping_list_to_toolbox'  
+  delete '/user_supplies/:id', to: 'user_supplies#delete' 
 
 end

@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_190410) do
     t.boolean "userneeds"
     t.boolean "intoolbox"
     t.integer "user_project_id"
+    t.string "project_name"
     t.bigint "user_id"
     t.bigint "supply_id"
     t.datetime "created_at", precision: 6, null: false
