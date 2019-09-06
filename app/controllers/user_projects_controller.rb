@@ -1,6 +1,13 @@
 class UserProjectsController < ApplicationController
     # gem = Active Model Serializers
     attr_accessor :id, :status, :usernote, :reviewDifficulty, :reviewFun, :reviewTime, :reviewText
+    
+    def show
+        review_id = params["id"].to_i
+        review = UserProject.find(review_id)
+        # debugger
+        render json: review
+    end
 
 
     def create
@@ -14,7 +21,20 @@ class UserProjectsController < ApplicationController
 
     def update
         params
-        debugger
+        review_id_to_update = params["id"].to_i
+        up = UserProject.find(review_id_to_update)
+        up.status =  params["status"]
+        up.reviewDifficulty = params["reviewDifficulty"]
+        up.reviewFun = params["reviewFun"]
+        up.reviewTime = params["reviewTime"]
+        up.reviewText = params["reviewText"]
+        if params["usernote"] 
+            up.userNote = params["userNote"]
+        end
+
+        up.save
+
+        render json: up
     end
 
 
@@ -56,7 +76,7 @@ class UserProjectsController < ApplicationController
             end
         end
         
-        # debugger  -- reviews_and_users has data here!! 
+        #debugger  #-- reviews_and_users has data here!! 
         render json: reviews_and_users
     end
 

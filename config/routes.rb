@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/projects/:id', to: 'user_projects#one_user_projects'  # For My Projects display. 
   post '/newuserproject', to: 'user_projects#create'
   get '/reviews/:id', to: 'user_projects#get_reviews'   # All reviews for one project
-  get '/review/:id', to: 'user_projects#show'   # One user's review for one project.
+  get '/review/:id', to: 'user_projects#show'   # One user's review for one project. NewReviewContainer
   patch '/review/:id', to: 'user_projects#update' # New / Edit Review
 
 

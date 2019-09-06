@@ -6,6 +6,7 @@ class CreateUserSupplies < ActiveRecord::Migration[6.0]
       t.boolean :userneeds
       t.boolean :intoolbox
       t.integer :user_project_id
+      t.string :project_name
       t.belongs_to :user
       t.belongs_to :supply
 

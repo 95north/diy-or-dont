@@ -2,9 +2,11 @@ class UserProjectSerializer # < ActiveModel::Serializer
     # The attribute names are a whitelist of attributes to be serialized.
     include FastJsonapi::ObjectSerializer
 
-    attributes :id, :project_id, :status, :usernote, :reviewDifficulty, :reviewFun, :reviewTime, :reviewText
-    belongs_to :user
-    belongs_to :project
+    # attributes :id, :project_id, :status, :usernote, :reviewDifficulty, :reviewFun, :reviewTime, :reviewText
+    # belongs_to :user
+    # belongs_to :project
+
+
 
 
 
