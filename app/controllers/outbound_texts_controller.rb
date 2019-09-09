@@ -12,14 +12,32 @@ class OutboundTextsController < ApplicationController
             api_key: NEXMO_API_KEY,
             api_secret: NEXMO_API_SECRET
         )  
-       
+
+        m = params
+
+        body = "Your Shopping List:"
+        m["text"].each_with_index { |item, index|
+            count = if !item[2] 
+                    count = "1"
+                else
+                    count = "#{item[2]}" 
+                end
+
+            body = body + " ##{index + 1}. #{count}ct.  #{item[0]}; #{item[1]}. #{item[4]}, #{item[5]}"
+        }
+
+        debugger
+
         response = client.sms.send(
             from: FROM_NUMBER,
             to: 16096824839,
-            text: 'A text message sent using the Nexmo SMS API'
+            text: body
+            # text: "Your Shopping List: " +  body.join(" ")
         )
 
-        render json: response
+        debugger 
+
+        render json: "Text sent"
 
     end
 
