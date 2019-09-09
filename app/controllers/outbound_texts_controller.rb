@@ -15,6 +15,8 @@ class OutboundTextsController < ApplicationController
 
         m = params
 
+        recipient = params["to"].to_i
+
         body = "Your Shopping List:"
         m["text"].each_with_index { |item, index|
             count = if !item[2] 
@@ -22,7 +24,6 @@ class OutboundTextsController < ApplicationController
                 else
                     count = "#{item[2]}" 
                 end
-
             body = body + " ##{index + 1}. #{count}ct.  #{item[0]}; #{item[1]}. #{item[4]}, #{item[5]}"
         }
 
@@ -30,7 +31,7 @@ class OutboundTextsController < ApplicationController
 
         response = client.sms.send(
             from: FROM_NUMBER,
-            to: 16096824839,
+            to: recipient,
             text: body
             # text: "Your Shopping List: " +  body.join(" ")
         )
