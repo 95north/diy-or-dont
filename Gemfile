@@ -15,6 +15,8 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 
+gem 'nexmo-rails'
+
 # gem 'active_model_serializers', '~> 0.10.0'
 gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
