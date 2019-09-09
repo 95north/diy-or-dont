@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   patch '/move_to_toolbox/:id', to: 'user_supplies#move_from_shopping_list_to_toolbox'  
   delete '/user_supplies/:id', to: 'user_supplies#delete' 
 
+      # Send SMS Text
+  post '/text_shopping_list', to: 'outbound_texts#create'
+
 end

@@ -1,5 +1,11 @@
-source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+# frozen_string_literal: true
+
+source "http://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
 
 ruby '2.6.1'
 
@@ -15,7 +21,9 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 
-gem 'nexmo-rails'
+gem 'nexmo'
+gem 'nexmo_rails'
+gem 'dotenv'
 
 # gem 'active_model_serializers', '~> 0.10.0'
 gem 'fast_jsonapi'
