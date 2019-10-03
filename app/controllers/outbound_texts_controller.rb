@@ -1,9 +1,21 @@
 class OutboundTextsController < ApplicationController
     require 'dotenv/load'
     require 'nexmo'
-    NEXMO_API_KEY = ENV['NEXMO_API_KEY']
-    NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
-    FROM_NUMBER = ENV['FROM_NUMBER']
+
+    # Below- don't need for Heroku, are in Heroku 
+    if !defined?(NEXMO_API_KEY)
+      NEXMO_API_KEY = ENV['NEXMO_API_KEY']
+    end
+
+    if !defined?(NEXMO_API_SECRET)
+      NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
+    end 
+
+    if !defined?(FROM_NUMBER) 
+      FROM_NUMBER = ENV['FROM_NUMBER']
+    end
+    
+
 
 
 
