@@ -5,7 +5,17 @@ class UserSuppliesController < ApplicationController
         us.user_id = params["userId"]
         us.supply_id= params["supplyId"]
         us.userneeds= true #params["userneeds"]
-        us.project_name = params["projectName"]
+        us.project_name = params["project_name"]
+
+        project_id = params["project_id"]
+        projectSupplyItem = ProjectSupply.select{ |ps|  
+        ps.supply_id === us.supply_id &&  ps.project_id  === project_id 
+        }
+
+        us.quantity = projectSupplyItem[0].quantity
+        us.measurement = projectSupplyItem[0].note
+
+
         us.save
         render json: us
     end
@@ -15,7 +25,16 @@ class UserSuppliesController < ApplicationController
         us.user_id = params["userId"]
         us.supply_id= params["supplyId"]
         us.intoolbox= true # params["intoolbox"]
-        us.project_name = params["projectName"]
+        us.project_name = params["project_name"]
+
+        project_id = params["project_id"]
+        projectSupplyItem = ProjectSupply.select{ |ps|  
+        ps.supply_id === us.supply_id &&  ps.project_id  === project_id 
+        }
+
+        us.quantity = projectSupplyItem[0].quantity
+        us.measurement = projectSupplyItem[0].note
+
         us.save
         render json: us
     end
