@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+# Demo
+Try out the API endpoints for yourself at: 
+https://diy-or-dont-backend.herokuapp.com/
 
-* System dependencies
 
-* Configuration
+# Data Architecture
+There are three main classes - Users, Projects, and Supplies, with a join table between each, forming a conceptual circle.
 
-* Database creation
 
-* Database initialization
+# Built With
+Ruby on Rails
+Sqlite 3
+Nexmo Library - Text Messaging Service
+CORS - Ruby gem to manage API endpoint accessibility
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
