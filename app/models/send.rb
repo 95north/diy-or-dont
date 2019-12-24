@@ -1,6 +1,9 @@
 require 'dotenv/load'
 require 'nexmo'
 
+Send = "Nothing sent"
+
+
 # NEXMO_API_KEY = ENV['NEXMO_API_KEY']
 # NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
 # TO_NUMBER = ENV['TO_NUMBER']
