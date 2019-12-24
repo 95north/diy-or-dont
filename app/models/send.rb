@@ -22,8 +22,8 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-client.sms.send(
-  from: 'Acme Inc',
-  to: TO_NUMBER,
-  text: 'A text message sent using the Nexmo SMS API'
-)
+# client.sms.send(
+#   from: 'Acme Inc',
+#   to: TO_NUMBER,
+#   text: 'A text message sent using the Nexmo SMS API'
+# )
