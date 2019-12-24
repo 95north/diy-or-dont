@@ -14,7 +14,7 @@ class OutboundTextsController < ApplicationController
     if !defined?(FROM_NUMBER) 
       FROM_NUMBER = ENV['FROM_NUMBER']
     end
-    
+
 
 
 
@@ -31,7 +31,7 @@ class OutboundTextsController < ApplicationController
 
         body = "Your Shopping List:"
         m["text"].each_with_index { |item, index|
-            count = if !item[2] 
+            count = if !item[2]     # rest of shopping list pieces are simply the array index, only the count data needs cleaning
                     count = "1"
                 else
                     count = "#{item[2]}" 
@@ -55,6 +55,9 @@ class OutboundTextsController < ApplicationController
     end
 
 
+    def Send
+      return "Nothing sent"
+    end
 
   private
 
