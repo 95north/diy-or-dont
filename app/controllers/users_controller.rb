@@ -41,28 +41,6 @@ class UsersController < ApplicationController
         end
     end    
 
-
-    def torisCreate
-        @user = User.create(user_params)
-        token = JWT.encode({user_id: user.id}, "secret")
-        render json: {token: token, user: user.username }
-        # @user = User.new(user_params)
-        # if @user.save
-
-        #   redirect_to :action => 'index'
-        # else
-        #   render :action => 'new'
-        # end
-
-        if @user.save
-            response = { message: 'User created successfully'}
-            render json: response, status: :created 
-           else
-            render json: @user.errors, status: :bad
-           end 
-    end
-  
-
   
   private
   

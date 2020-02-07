@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     require 'jwt'
-
+    skip_before_action :authorized, only: [:all_projects_and_their_tools_and_reviews]
     attr_accessor :name, :id, :overview, :description, :image
 
 
@@ -30,8 +30,6 @@ class ProjectsController < ApplicationController
                 ps.save
             end
         }
-
-
 
         params["tools"].each { |proj_tool|
             
