@@ -1,12 +1,7 @@
 require 'dotenv/load'
 require 'nexmo'
 
-Send = "Nothing sent"
-
-
-# NEXMO_API_KEY = ENV['NEXMO_API_KEY']
-# NEXMO_API_SECRET = ENV['NEXMO_API_SECRET']
-# TO_NUMBER = ENV['TO_NUMBER']
+Send = "Nothing sent"  #to make Heroku happy
 
 if !defined?(NEXMO_API_KEY)
   NEXMO_API_KEY = ENV['NEXMO_API_KEY']
@@ -25,8 +20,3 @@ client = Nexmo::Client.new(
   api_secret: NEXMO_API_SECRET
 )
 
-# client.sms.send(
-#   from: 'Acme Inc',
-#   to: TO_NUMBER,
-#   text: 'A text message sent using the Nexmo SMS API'
-# )

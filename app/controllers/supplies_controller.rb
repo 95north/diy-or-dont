@@ -10,7 +10,6 @@ class SuppliesController < ApplicationController
 
     def create 
         s = Supply.new
-        debugger
         s.name = params["name"]
         s.description = params["description"]
     end

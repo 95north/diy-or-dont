@@ -14,20 +14,35 @@ class UsersController < ApplicationController
     # enabled on an action, this before_action flags its after_action to 
     # verify that JavaScript responses are for XHR requests, ensuring they 
     # follow the browser's same-origin policy.
+    skip_before_action :authorized, only: [:create]
     attr_accessor :username, :location
 
     def index
-        # debugger
+
         @users= User.all 
     end
   
     def new
-        # debugger
+
         @user = User.new
     end
   
+
+
     def create
-        # debugger  #
+        @user = User.create(user_params)
+        if @user.valid? 
+
+            token = encode_token({user_id: @user.id})
+            render json: {token: token, user: @user.username }, status: :created
+        else
+            render json: {error: "User Creation failed"},
+            status: :not_acceptable
+        end
+    end    
+
+
+    def torisCreate
         @user = User.create(user_params)
         token = JWT.encode({user_id: user.id}, "secret")
         render json: {token: token, user: user.username }
@@ -47,11 +62,7 @@ class UsersController < ApplicationController
            end 
     end
   
-    def edit
-    end
-  
-    def show
-    end
+
   
   private
   

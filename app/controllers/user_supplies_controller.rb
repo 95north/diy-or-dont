@@ -4,7 +4,7 @@ class UserSuppliesController < ApplicationController
         us = UserSupply.new
         us.user_id = params["userId"]
         us.supply_id= params["supplyId"]
-        us.userneeds= true #params["userneeds"]
+        us.userneeds= true 
         us.project_name = params["project_name"]
 
         project_id = params["project_id"]

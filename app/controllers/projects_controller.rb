@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
         new_project["name"] = params["newProjectName"]
         new_project["overview"] = params["newProjectOverview"]
         new_project["description"] = params["newProjectDescription"]
-        # new_project["image"] = params
         new_project.save 
         project_id = new_project.id 
         
@@ -63,11 +62,6 @@ class ProjectsController < ApplicationController
 
         @projects.each do |proj|
             output.push([proj, proj.user_projects, proj.supplies, proj.project_supplies])
-
-
-            # p = Project.find( uproj.project_id )
-            # output.push([user.username, user.location, uproj, p])
-            # debugger
         end   
         render json: output        
     end

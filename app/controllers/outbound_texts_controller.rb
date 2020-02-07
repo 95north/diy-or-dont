@@ -31,7 +31,7 @@ class OutboundTextsController < ApplicationController
 
         body = "Your Shopping List:"
         m["text"].each_with_index { |item, index|
-            count = if !item[2]     # rest of shopping list pieces are simply the array index, only the count data needs cleaning
+            count = if !item[2]     
                     count = "1"
                 else
                     count = "#{item[2]}" 
@@ -45,7 +45,6 @@ class OutboundTextsController < ApplicationController
             from: FROM_NUMBER,
             to: recipient,
             text: body
-            # text: "Your Shopping List: " +  body.join(" ")
         )
 
         debugger 
@@ -55,62 +54,23 @@ class OutboundTextsController < ApplicationController
     end
 
 
-    def Send
-      return "Nothing sent"
-    end
+
 
   private
 
 
-  # Sends an SMS  (alternate method, I don't think i want to use.)
-
-
-
-#   class Sms < ApplicationRecord
-#     validates :to, presence: true
-#     validates :from, presence: true
-#     validates :text, presence: true
-#   end
-
-
-
-#   def create
-#     # Create a SMS record to be stored in the database
-#     @sms = Sms.new(to: 16096824839, from: FROM_NUMBER, text:"test!! Monday")
-#     # @sms = Sms.new(safe_params)
-
-#     if @sms.save
-#       deliver @sms
-#       redirect_to :outbound_sms, notice: 'SMS Sent'
-#     else
-#       flash[:alert] = 'Something went wrong'
-#       render :index
-#     end
-#   end
-
-
-      # Shows the UI for sending an SMS
-#   def index
-#     @sms = Sms.new
-#   end
-
-
   # Initializes the Nexmo API client
   def nexmo
-    # We do not pass in any API key or secret as
-    # we're using environment variables `NEXMO_API_KEY`
-    # and `NEXMO_API_SECRET`
+    # using environment variables,  so no API key
     client = Nexmo::Client.new
   end
 
-  # Determines the params that can be
-  # stored in the database safely
+  # Determines params that can be stored in db safely
   def safe_params
     params.require(:sms).permit(:to, :from, :text)
   end
 
-  # Uses the Nexmo API to send the stored
-  # SMS message
+  # Uses the Nexmo API to send the stored message
   def deliver sms
     response = nexmo.send_message(
       from: sms.from,
@@ -118,8 +78,7 @@ class OutboundTextsController < ApplicationController
       text: sms.text
     )
 
-    # If sending the SMS was a success then store
-    # the message ID on the SMS record
+    # If sending was a success, then store message ID on SMS record
     if response['messages'].first['status'] == '0'
       sms.update_attributes(
         message_id: response['messages'].first['message-id']
