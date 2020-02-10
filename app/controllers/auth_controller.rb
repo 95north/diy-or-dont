@@ -5,9 +5,15 @@ class AuthController < ApplicationController
     skip_before_action :authorized, only: [:authenticate]
 
     def authenticate  #returning user login
+
         user = User.find_by(username: user_params["username"])
+        puts "In Authenticate, user is:---------- "
+        puts user
         if user && user.authenticate(user_params[:password])
+            puts "Returning user login - user authenticated!"
             token = encode_token({user_id: user.id})
+            puts "token is------------: "
+            puts token
             render json: {
                 user_id: user.id,
                 user_name: user.username,

@@ -31,9 +31,13 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        puts "In Users create, @user is:---------- "
+        puts @user
         if @user.valid? 
-
+            puts "@user is valid"
             token = encode_token({user_id: @user.id})
+            puts "Token is : =-----"
+            puts token
             render json: {token: token, user: @user.username }, status: :created
         else
             render json: {error: "User Creation failed"},
