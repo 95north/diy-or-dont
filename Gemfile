@@ -12,7 +12,15 @@ ruby '2.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+# gem 'pg', '>= 0.18', '< 2.0'
+# With above ^, was getting error: 
+# dlopen(/Users/tori/.rvm/gems/ruby-2.6.1/gems/pg-1.1.4/lib/pg_ext.bundle, 9): 
+# Library not loaded: /usr/local/opt/openssl/lib/libssl.1.0.0.dylib (LoadError)
+#   Referenced from: /usr/local/opt/postgresql/lib/libpq.5.dylib
+#   Reason: image not found - /Users/tori/.rvm/gems/ruby-2.6.1/gems/pg-1.1.4/lib/pg_ext.bundle
+
+gem 'pg', '~> 1.2.2'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
